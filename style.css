@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.spiner_wapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  position: relative;
+}
+.spiner_wapper img {
+  position: absolute;
+}
+#circle {
+  width: 30%;
+  transition: 5s;
+  rotate: 480deg;
+}
+#spiner {
+  width: 8%;
+  animation: zoomInout 0.5s infinite;
+  cursor: pointer;
+}
+
+@keyframes zoomInout {
+  0% {
+    scale: 0.95;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+#form {
+  width: 25%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  scale: 0;
+  transition: 0.3s ease;
+  pointer-events: none;
+  transform-origin: 0 0;
+}
+
+#form.active {
+  scale: 1;
+  pointer-events: all;
+}
+#form input {
+  width: 100%;
+  padding: 10px;
+}
+
+#form button {
+  background-color: rgb(187, 0, 0);
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  z-index: 9;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#form.active + .overlay {
+  pointer-events: all;
+  opacity: 1;
+}
